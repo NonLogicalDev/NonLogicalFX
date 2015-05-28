@@ -9,20 +9,20 @@
 /* Begin PBXBuildFile section */
 		B1EAA00D399133ACC32F3B44 /* RawShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA857D6763F0A9FFD4BDC /* RawShader.cpp */; };
 		B1EAA183EE62BD3B26C0161F /* FileTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA1A6D5FACBDD94612775 /* FileTexture.cpp */; };
+		B1EAA1AC1A31900CA4BE9EEE /* SimpleCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA104B7B7A14A7028E996 /* SimpleCube.cpp */; };
 		B1EAA1C230F6C0D51205C31D /* BaseMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA1CB1265DF69D31F2C01 /* BaseMaterial.cpp */; };
 		B1EAA1CF755873EC883660C6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1EAABB8A29B94ADD8FCBA92 /* OpenGL.framework */; };
 		B1EAA208CF1C3426D0B28376 /* ShaderLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAADB5D4BC55CA0328F216 /* ShaderLibrary.cpp */; };
 		B1EAA2C380462FB7AD0EFE67 /* SGRoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA8848E168B17DFE40CC7 /* SGRoot.cpp */; };
 		B1EAA37C78C2E2582CF2B99A /* FileShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAACC5B84084EB869C4039 /* FileShader.cpp */; };
+		B1EAA4C015999F07E90C0D49 /* Skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA5CA132776D30FC6E954 /* Skybox.cpp */; };
+		B1EAA727F12DED0875E3EE75 /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA27F4CB4A79E67B9A10F /* Terrain.cpp */; };
 		B1EAA8A1F159965B6F087E0E /* RawTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA19DDA4E5D6BDD0F3D9E /* RawTexture.cpp */; };
-		B1EAA9FCE68DB11F862A881D /* SimplePlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA6F47454FB6DDD7AA450 /* SimplePlane.cpp */; };
 		B1EAAB2E14DF21C2B48ACB4A /* SGGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAAD56FE459B5902F4280F /* SGGroup.cpp */; };
 		B1EAAB6C20AB81D39C614587 /* SGGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAAA69FA2B061B6BA90C1A /* SGGeometry.cpp */; };
 		B1EAAB9B9915C84B51BB6894 /* Basic3DShaderV.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = B1EAAA41A3DF20992901FDFB /* Basic3DShaderV.glsl */; };
-		B1EAACC601E2F282862B108D /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAAD5066CD1B41AE2BA4DF /* Terrain.cpp */; };
-		B1EAAD349E4CA40102FC40D3 /* SimpleCube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA8EE64E9979C214C6671 /* SimpleCube.cpp */; };
+		B1EAAC7091E1F530F4C02DA3 /* SimplePlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAADCA6FABDE3E0F049277 /* SimplePlane.cpp */; };
 		B1EAAD6A1F9CF269CD810FB1 /* GLFWWindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA0F3511436D7D152ADDA /* GLFWWindowManager.cpp */; };
-		B1EAAD78587E0C68A8EF4FB9 /* Skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA110028588CE43A3E4FB /* Skybox.cpp */; };
 		B1EAAE12C25655609F0270C0 /* Basic3DShaderF.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = B1EAADA56A3BDF13B2255F9C /* Basic3DShaderF.glsl */; };
 		B1EAAE68FD0ECEFC49B7C147 /* SGIndexedGeometry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA5615176511E0E5751E6 /* SGIndexedGeometry.cpp */; };
 		D47D6CBE1B130C1C00B8DE0B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D47D6CBD1B130C1C00B8DE0B /* main.cpp */; };
@@ -53,47 +53,47 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B1EAA0C0CC76785911840C5D /* SimpleCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCube.h; sourceTree = "<group>"; };
 		B1EAA0DCE907A1907872B7C1 /* UVTEST.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UVTEST.png; sourceTree = "<group>"; };
 		B1EAA0F3511436D7D152ADDA /* GLFWWindowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLFWWindowManager.cpp; sourceTree = "<group>"; };
-		B1EAA110028588CE43A3E4FB /* Skybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Skybox.cpp; sourceTree = "<group>"; };
+		B1EAA104B7B7A14A7028E996 /* SimpleCube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleCube.cpp; sourceTree = "<group>"; };
 		B1EAA19DDA4E5D6BDD0F3D9E /* RawTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RawTexture.cpp; sourceTree = "<group>"; };
 		B1EAA1A6D5FACBDD94612775 /* FileTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileTexture.cpp; sourceTree = "<group>"; };
 		B1EAA1CB1265DF69D31F2C01 /* BaseMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseMaterial.cpp; sourceTree = "<group>"; };
-		B1EAA2A5B98A64F3616DD0A4 /* SimplePlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePlane.h; sourceTree = "<group>"; };
+		B1EAA27F4CB4A79E67B9A10F /* Terrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Terrain.cpp; sourceTree = "<group>"; };
 		B1EAA2BB1E7B489280EBB779 /* skybox2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = skybox2.jpg; sourceTree = "<group>"; };
 		B1EAA302CAF9616D908A6300 /* ShaderLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderLibrary.h; sourceTree = "<group>"; };
 		B1EAA3FA0D5EDCF7D09BEECC /* GLFWWindowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLFWWindowManager.h; sourceTree = "<group>"; };
 		B1EAA43D445AFCFA6EF9A483 /* UVTestV.glsl */ = {isa = PBXFileReference; lastKnownFileType = file.glsl; path = UVTestV.glsl; sourceTree = "<group>"; };
 		B1EAA48A2F87E61525B43622 /* skybox.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = skybox.jpg; sourceTree = "<group>"; };
+		B1EAA4AEEA10F4224C189ED0 /* Terrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terrain.h; sourceTree = "<group>"; };
+		B1EAA51BB1D51FB547E2B96C /* Skybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skybox.h; sourceTree = "<group>"; };
 		B1EAA5615176511E0E5751E6 /* SGIndexedGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGIndexedGeometry.cpp; sourceTree = "<group>"; };
 		B1EAA5BA54CB7518C588F401 /* UVTestF.glsl */ = {isa = PBXFileReference; lastKnownFileType = file.glsl; path = UVTestF.glsl; sourceTree = "<group>"; };
+		B1EAA5CA132776D30FC6E954 /* Skybox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Skybox.cpp; sourceTree = "<group>"; };
 		B1EAA5D065EA1E1C1B8C6CB0 /* RawShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawShader.h; sourceTree = "<group>"; };
-		B1EAA6F47454FB6DDD7AA450 /* SimplePlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimplePlane.cpp; sourceTree = "<group>"; };
 		B1EAA857D6763F0A9FFD4BDC /* RawShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RawShader.cpp; sourceTree = "<group>"; };
 		B1EAA8848E168B17DFE40CC7 /* SGRoot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGRoot.cpp; sourceTree = "<group>"; };
-		B1EAA8EE64E9979C214C6671 /* SimpleCube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleCube.cpp; sourceTree = "<group>"; };
 		B1EAA936AB1C4DDC46531106 /* DepthShaderF.glsl */ = {isa = PBXFileReference; lastKnownFileType = file.glsl; path = DepthShaderF.glsl; sourceTree = "<group>"; };
 		B1EAAA41A3DF20992901FDFB /* Basic3DShaderV.glsl */ = {isa = PBXFileReference; lastKnownFileType = file.glsl; path = Basic3DShaderV.glsl; sourceTree = "<group>"; };
 		B1EAAA69FA2B061B6BA90C1A /* SGGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGGeometry.cpp; sourceTree = "<group>"; };
-		B1EAAA8FE7733B6965717FE8 /* Terrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terrain.h; sourceTree = "<group>"; };
 		B1EAAB120BD43062C372CBCC /* BaseMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMaterial.h; sourceTree = "<group>"; };
 		B1EAAB38D572E10C052F8BAA /* SGIndexedGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGIndexedGeometry.h; sourceTree = "<group>"; };
 		B1EAAB70DA90C0F050674CB7 /* FileTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTexture.h; sourceTree = "<group>"; };
 		B1EAABB8A29B94ADD8FCBA92 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = ../../../../../Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = "<group>"; };
 		B1EAAC117D8050DD86CB1377 /* DepthShaderV.glsl */ = {isa = PBXFileReference; lastKnownFileType = file.glsl; path = DepthShaderV.glsl; sourceTree = "<group>"; };
+		B1EAAC4D86A72C4221357685 /* SimpleCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleCube.h; sourceTree = "<group>"; };
 		B1EAACC5B84084EB869C4039 /* FileShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileShader.cpp; sourceTree = "<group>"; };
 		B1EAACF08B2629117A2048A9 /* SanDiegoTerrain.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SanDiegoTerrain.jpg; sourceTree = "<group>"; };
-		B1EAAD5066CD1B41AE2BA4DF /* Terrain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Terrain.cpp; sourceTree = "<group>"; };
 		B1EAAD50AF1EF7D37DE72464 /* OpenGL_HEADER.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenGL_HEADER.h; sourceTree = "<group>"; };
 		B1EAAD56FE459B5902F4280F /* SGGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGGroup.cpp; sourceTree = "<group>"; };
 		B1EAADA56A3BDF13B2255F9C /* Basic3DShaderF.glsl */ = {isa = PBXFileReference; lastKnownFileType = file.glsl; path = Basic3DShaderF.glsl; sourceTree = "<group>"; };
 		B1EAADB5D4BC55CA0328F216 /* ShaderLibrary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderLibrary.cpp; sourceTree = "<group>"; };
+		B1EAADCA6FABDE3E0F049277 /* SimplePlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimplePlane.cpp; sourceTree = "<group>"; };
 		B1EAADE75F89A1B2B2F1F156 /* SGRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGRoot.h; sourceTree = "<group>"; };
 		B1EAAE0FC9B65809FF4021B8 /* RawTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawTexture.h; sourceTree = "<group>"; };
 		B1EAAE35673A121B769EC1B1 /* SGNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNode.h; sourceTree = "<group>"; };
-		B1EAAECC97992728251B14FA /* Skybox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Skybox.h; sourceTree = "<group>"; };
 		B1EAAF0EDBA1710E3EDC1A93 /* FileShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileShader.h; sourceTree = "<group>"; };
+		B1EAAF4A830CE4D6EC81B009 /* SimplePlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePlane.h; sourceTree = "<group>"; };
 		B1EAAF760A30D2A7C19D4345 /* SGGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGroup.h; sourceTree = "<group>"; };
 		B1EAAFF1BBBB2F554F2B658E /* SGGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGeometry.h; sourceTree = "<group>"; };
 		D47D6CBA1B130C1C00B8DE0B /* NonLogicalFX */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NonLogicalFX; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,19 +137,13 @@
 			path = Textures;
 			sourceTree = "<group>";
 		};
-		B1EAA1EE53CAFA0297CBD514 /* WorldObjects */ = {
+		B1EAA1EE53CAFA0297CBD514 /* Content */ = {
 			isa = PBXGroup;
 			children = (
-				B1EAA110028588CE43A3E4FB /* Skybox.cpp */,
-				B1EAAECC97992728251B14FA /* Skybox.h */,
-				B1EAAD5066CD1B41AE2BA4DF /* Terrain.cpp */,
-				B1EAAA8FE7733B6965717FE8 /* Terrain.h */,
-				B1EAA8EE64E9979C214C6671 /* SimpleCube.cpp */,
-				B1EAA0C0CC76785911840C5D /* SimpleCube.h */,
-				B1EAA6F47454FB6DDD7AA450 /* SimplePlane.cpp */,
-				B1EAA2A5B98A64F3616DD0A4 /* SimplePlane.h */,
+				B1EAA8BB68BCBC63F9D8A35D /* Objects */,
+				B1EAADF558C0E710CBFF2BAC /* Materials */,
 			);
-			path = WorldObjects;
+			path = Content;
 			sourceTree = "<group>";
 		};
 		B1EAA433BAA9DC5DCBE05A4F /* Models */ = {
@@ -177,6 +171,21 @@
 				B1EAAB120BD43062C372CBCC /* BaseMaterial.h */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		B1EAA8BB68BCBC63F9D8A35D /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B1EAA104B7B7A14A7028E996 /* SimpleCube.cpp */,
+				B1EAAC4D86A72C4221357685 /* SimpleCube.h */,
+				B1EAADCA6FABDE3E0F049277 /* SimplePlane.cpp */,
+				B1EAAF4A830CE4D6EC81B009 /* SimplePlane.h */,
+				B1EAA5CA132776D30FC6E954 /* Skybox.cpp */,
+				B1EAA51BB1D51FB547E2B96C /* Skybox.h */,
+				B1EAA27F4CB4A79E67B9A10F /* Terrain.cpp */,
+				B1EAA4AEEA10F4224C189ED0 /* Terrain.h */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 		B1EAA9965A95A22B2EC7D63B /* SceneGraph */ = {
@@ -223,6 +232,13 @@
 				B1EAA5BA54CB7518C588F401 /* UVTestF.glsl */,
 			);
 			path = Shaders;
+			sourceTree = "<group>";
+		};
+		B1EAADF558C0E710CBFF2BAC /* Materials */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Materials;
 			sourceTree = "<group>";
 		};
 		B1EAAE389034F47C80DA7473 /* MainApplication */ = {
@@ -283,7 +299,7 @@
 				B1EAA839E36544F5C251A5E5 /* Tools */,
 				B1EAAFE33E1BC4A185EABBDC /* OpenGL_Tools */,
 				B1EAA9965A95A22B2EC7D63B /* SceneGraph */,
-				B1EAA1EE53CAFA0297CBD514 /* WorldObjects */,
+				B1EAA1EE53CAFA0297CBD514 /* Content */,
 				B1EAAE389034F47C80DA7473 /* MainApplication */,
 			);
 			path = NonLogicalFX;
@@ -351,16 +367,16 @@
 				B1EAAB6C20AB81D39C614587 /* SGGeometry.cpp in Sources */,
 				B1EAAB2E14DF21C2B48ACB4A /* SGGroup.cpp in Sources */,
 				B1EAA2C380462FB7AD0EFE67 /* SGRoot.cpp in Sources */,
-				B1EAAD78587E0C68A8EF4FB9 /* Skybox.cpp in Sources */,
 				B1EAAE68FD0ECEFC49B7C147 /* SGIndexedGeometry.cpp in Sources */,
-				B1EAACC601E2F282862B108D /* Terrain.cpp in Sources */,
-				B1EAAD349E4CA40102FC40D3 /* SimpleCube.cpp in Sources */,
-				B1EAA9FCE68DB11F862A881D /* SimplePlane.cpp in Sources */,
 				B1EAAD6A1F9CF269CD810FB1 /* GLFWWindowManager.cpp in Sources */,
 				B1EAA208CF1C3426D0B28376 /* ShaderLibrary.cpp in Sources */,
 				B1EAA183EE62BD3B26C0161F /* FileTexture.cpp in Sources */,
 				B1EAA1C230F6C0D51205C31D /* BaseMaterial.cpp in Sources */,
 				B1EAA8A1F159965B6F087E0E /* RawTexture.cpp in Sources */,
+				B1EAA1AC1A31900CA4BE9EEE /* SimpleCube.cpp in Sources */,
+				B1EAAC7091E1F530F4C02DA3 /* SimplePlane.cpp in Sources */,
+				B1EAA4C015999F07E90C0D49 /* Skybox.cpp in Sources */,
+				B1EAA727F12DED0875E3EE75 /* Terrain.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
