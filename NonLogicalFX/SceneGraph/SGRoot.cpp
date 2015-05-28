@@ -33,11 +33,11 @@ void SGRoot::addChild(SGNode *newChild) {
     rootGroup->addChild(newChild);
 }
 
-void SGRoot::updateGlobalUniformsForShader(RawShader *shader) {
-    if (uniformUpdateCallback) uniformUpdateCallback(shader);
+void SGRoot::updateGlobalUniformsForMaterial(BaseMaterial *material) {
+    if (uniformUpdateCallback) uniformUpdateCallback(material);
 }
 
-void SGRoot::setGlobalUniformUpdateCallback(std::function<void (RawShader*)> uniformUpdateCallback) {
+void SGRoot::setGlobalUniformUpdateCallback(std::function<void (BaseMaterial*)> uniformUpdateCallback) {
     this->uniformUpdateCallback = uniformUpdateCallback;
 }
 

@@ -11,7 +11,7 @@ SGGeometry::SGGeometry() :
         verticyCount(0),
         vertexArrayBuffer(0),
         drawMode(GL_TRIANGLES),
-        shader(nullptr)
+        material(nullptr)
 {
 }
 
@@ -24,34 +24,26 @@ void SGGeometry::unbindTextures() {
 }
 
 void SGGeometry::render(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
-    if (verticyCount > 0 && vertexArrayBuffer != 0 && shader != nullptr) {
-        glBindVertexArray(vertexArrayBuffer);
-        shader->bind(); bindTextures();
+    if (verticyCount > 0 && vertexArrayBuffer != 0 && material != nullptr) {
+        material->bind();
+        material->setMVPUniform(M, V, P);
 
-        updateUniforms(M, V, P);
-        if(parent) parent->updateGlobalUniformsForShader(shader);
+        glBindVertexArray(vertexArrayBuffer);
+        if(parent) parent->updateGlobalUniformsForMaterial(material);
 
         glDrawArrays(drawMode, 0, verticyCount);
-        shader->unbind(); unbindTextures();
+        material->unbind();
     }
 }
 
-void SGGeometry::updateUniforms(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
-    GLint   MM = shader->uniform("_Model"),
-            VV = shader->uniform("_View"),
-            PP = shader->uniform("_Projection"),
-            MV = shader->uniform("_MVP");
+void SGGeometry::updateUniforms() { }
 
-    glm::mat4 MVP = P * V * M;
-
-    glUniformMatrix4fv(MM, 1, GL_FALSE, glm::value_ptr(M));
-    glUniformMatrix4fv(VV, 1, GL_FALSE, glm::value_ptr(V));
-    glUniformMatrix4fv(PP, 1, GL_FALSE, glm::value_ptr(P));
-    glUniformMatrix4fv(MV, 1, GL_FALSE, glm::value_ptr(MVP));
-}
-
-void SGGeometry::updateGlobalUniformsForShader(RawShader *shader) {}
+void SGGeometry::updateGlobalUniformsForMaterial(BaseMaterial* material) {}
 
 void SGGeometry::reload() {
-    shader->reload();
+    material->reload();
+}
+
+void SGGeometry::update() {
+
 }

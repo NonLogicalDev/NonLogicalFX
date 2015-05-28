@@ -10,30 +10,13 @@ Terrain::Terrain() {
 }
 
 void Terrain::constructGeometry() {
-    // Preparing the terrain
-
-    startDrawMode(GL_TRIANGLES);
-
     SGIndexedGeometry::constructGeometry();
 }
 
 void Terrain::finalizeGeometry() {
-
+    SGIndexedGeometry::finalizeGeometry();
 }
 
-void Terrain::bindTextures() {
-
+void Terrain::updateUniforms() {
+    SGIndexedGeometry::updateUniforms();
 }
-
-void Terrain::unbindTextures() {
-
-}
-
-void Terrain::updateUniforms(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
-    SGIndexedGeometry::updateUniforms(M, V, P);
-}
-
-void Terrain::update() {
-
-}
-

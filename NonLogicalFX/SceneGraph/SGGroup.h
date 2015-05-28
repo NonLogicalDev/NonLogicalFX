@@ -15,7 +15,7 @@ public:
     SGGroup(glm::mat4 M);
 
     virtual void render(glm::mat4 M, glm::mat4 V, glm::mat4 P);
-    virtual void updateGlobalUniformsForShader(RawShader *shader);
+    virtual void updateGlobalUniformsForMaterial(BaseMaterial *material);
     virtual void update();
     virtual void reload();
 

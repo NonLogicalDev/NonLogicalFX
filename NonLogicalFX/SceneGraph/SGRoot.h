@@ -21,16 +21,16 @@ public:
     virtual void update();
     virtual void reload();
 
-    void setGlobalUniformUpdateCallback(std::function<void (RawShader*)> uniformUpdateCallback);
+    void setGlobalUniformUpdateCallback(std::function<void (BaseMaterial*)> uniformUpdateCallback);
 
-    void updateGlobalUniformsForShader(RawShader *shader);
+    void updateGlobalUniformsForMaterial(BaseMaterial *material);
 
     void addChild(SGNode* newChild);
 
     glm::mat4 M, V, P;
 private:
     SGGroup* rootGroup;
-    std::function<void (RawShader*)> uniformUpdateCallback;
+    std::function<void (BaseMaterial*)> uniformUpdateCallback;
 };
 
 

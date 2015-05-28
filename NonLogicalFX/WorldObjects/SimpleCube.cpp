@@ -7,23 +7,17 @@
 #include "ShaderLibrary.h"
 
 SimpleCube::SimpleCube() {
-    shader = ShaderLibrary::get(SL_UV_TEST);
-    texture = new FileTexture("UVTEST.png");
+//    shader = ShaderLibrary::get(SL_UV_TEST);
+//    texture = new FileTexture("UVTEST.png");
+    material = new BaseMaterial(
+            ShaderLibrary::get(SL_UV_TEST), {
+            MaterialTextureUnit("uvTexture", 0, new FileTexture("UVTEST.png"))
+    });
     constructGeometry();
 }
 
-void SimpleCube::updateUniforms(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
-    SGIndexedGeometry::updateUniforms(M, V, P);
-    glUniform1i(shader->uniform("uvTexture"), 0);
-}
-
-
-void SimpleCube::bindTextures() {
-    texture->bind(GL_TEXTURE0);
-}
-
-void SimpleCube::unbindTextures() {
-    texture->unbind();
+void SimpleCube::updateUniforms() {
+    SGIndexedGeometry::updateUniforms();
 }
 
 void SimpleCube::constructGeometry() {
@@ -114,10 +108,5 @@ void SimpleCube::constructGeometry() {
 }
 
 void SimpleCube::finalizeGeometry() {
-
-}
-
-
-void SimpleCube::update() {
 
 }

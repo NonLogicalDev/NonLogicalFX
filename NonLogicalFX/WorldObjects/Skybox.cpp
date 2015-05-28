@@ -6,29 +6,22 @@
 #include "Skybox.h"
 
 Skybox::Skybox(const char *cubeMapFileName) {
-    shader = ShaderLibrary::get(SL_BASIC_3D_SHADER);
-    texture = new FileTexture(cubeMapFileName);
+    material = new BaseMaterial(
+        ShaderLibrary::get(SL_BASIC_3D_SHADER),{
+        MaterialTextureUnit("baseTexture", 0, new FileTexture("skybox2.jpg"))
+    });
     constructGeometry();
 }
 
-void Skybox::bindTextures() {
-    texture->bind(GL_TEXTURE0);
-}
-
-void Skybox::unbindTextures() {
-    texture->unbind();
-}
-
-void Skybox::updateUniforms(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
-    SGIndexedGeometry::updateUniforms(M, V, P);
-    glUniform1i(shader->uniform("baseTexture"), 0);
-}
-
-void Skybox::update() {
-
+void Skybox::updateUniforms() {
+    SGIndexedGeometry::updateUniforms();
 }
 
 // Geometry ====================================================================
+void Skybox::finalizeGeometry() {
+    SGIndexedGeometry::finalizeGeometry();
+}
+
 void Skybox::constructGeometry() {
 
     float s = 40.0;
@@ -116,15 +109,3 @@ void Skybox::constructGeometry() {
     SGIndexedGeometry::constructGeometry();
 }
 
-void Skybox::finalizeGeometry() {
-    GLuint colorBuffer;
-    constructVertexAttribute(3, [](GLuint loc, std::vector<long> indexes) {
-
-    }, colorBuffer, false);
-}
-
-
-void Skybox::reload() {
-    SGGeometry::reload();
-    texture->reload();
-}

@@ -15,18 +15,18 @@ public:
     virtual void constructGeometry() = 0;
     virtual void bindTextures();
     virtual void unbindTextures();
-    virtual void updateUniforms(glm::mat4 M, glm::mat4 V, glm::mat4 P);
-    virtual void update() = 0;
+    virtual void updateUniforms();
+    virtual void update();
     virtual void reload();
     // ================================================================
 
     virtual void render(glm::mat4 M, glm::mat4 V, glm::mat4 P);
-    virtual void updateGlobalUniformsForShader(RawShader *shader);
+    virtual void updateGlobalUniformsForMaterial(BaseMaterial *material);
 
 protected:
     SGGeometry();
 
-    RawShader *shader;
+    BaseMaterial* material;
 
     long verticyCount;
     GLuint vertexArrayBuffer;

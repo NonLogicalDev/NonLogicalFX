@@ -11,8 +11,8 @@ SGIndexedGeometry::SGIndexedGeometry() {
     curVertexCount = 0;
 }
 
-void SGIndexedGeometry::updateUniforms(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
-    SGGeometry::updateUniforms(M, V, P);
+void SGIndexedGeometry::updateUniforms() {
+    SGGeometry::updateUniforms();
 }
 
 void SGIndexedGeometry::constructGeometry() {
@@ -172,5 +172,3 @@ void SGIndexedGeometry::startDrawMode(GLenum mode) {
 }
 
 void SGIndexedGeometry::finalizeGeometry() {  }
-void SGIndexedGeometry::bindTextures() { SGGeometry::bindTextures(); }
-void SGIndexedGeometry::unbindTextures() { SGGeometry::unbindTextures(); }

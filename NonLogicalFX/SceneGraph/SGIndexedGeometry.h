@@ -15,10 +15,7 @@ public:
     // Interface ======================================================
     virtual void constructGeometry();
     virtual void finalizeGeometry();
-    virtual void bindTextures();
-    virtual void unbindTextures();
-    virtual void updateUniforms(glm::mat4 M, glm::mat4 V, glm::mat4 P);
-    virtual void update() = 0;
+    virtual void updateUniforms();
     // ================================================================
 
     void addVertex(float x, float y, float z);

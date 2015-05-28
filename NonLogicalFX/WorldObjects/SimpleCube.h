@@ -12,16 +12,12 @@
 class SimpleCube : public SGIndexedGeometry {
 public:
     SimpleCube();
+
     // Interface ======================================================
     virtual void constructGeometry();
     virtual void finalizeGeometry();
-    virtual void bindTextures();
-    virtual void unbindTextures();
-    virtual void updateUniforms(glm::mat4 M, glm::mat4 V, glm::mat4 P);
-    virtual void update();
+    virtual void updateUniforms();
     // ================================================================
-private:
-    FileTexture *texture;
 };
 
 

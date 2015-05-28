@@ -41,8 +41,8 @@ GLFWWindowManager::GLFWWindowManager(char const *title, int width, int height) {
     // Building a scene out of primitives
     buildScene();
 
-    root.setGlobalUniformUpdateCallback([this](RawShader *_shader){
-        this->handleShaderUniformUpdate(_shader);
+    root.setGlobalUniformUpdateCallback([this](BaseMaterial *material){
+        this->handleShaderUniformUpdate(material);
     });
 }
 
@@ -128,8 +128,6 @@ void GLFWWindowManager::runEventLoop() {
 
 
 
-
-
 #pragma mark - Drawing/Animation
 
 void GLFWWindowManager::update() {
@@ -143,8 +141,8 @@ void GLFWWindowManager::update() {
     scene->applyTransform(glm::rotate(0.005f, glm::vec3(0.0, 1.0, 0.0)));
 }
 
-void GLFWWindowManager::handleShaderUniformUpdate(RawShader *shader) {
-    GLuint tLoc = shader->uniform("iGlobalTime");
+void GLFWWindowManager::handleShaderUniformUpdate(BaseMaterial *material) {
+    GLuint tLoc = material->getShader()->uniform("iGlobalTime");
     float time = glfwGetTime();
     glUniform1f(tLoc, time);
 }

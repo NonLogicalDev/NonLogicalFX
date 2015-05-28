@@ -31,7 +31,7 @@ private:
 
     void setUpOpenGLProfile();
     void handleCallbacks();
-    void handleShaderUniformUpdate(RawShader* shader);
+    void handleShaderUniformUpdate(BaseMaterial* material);
 
     void setUpOpenGL();
 

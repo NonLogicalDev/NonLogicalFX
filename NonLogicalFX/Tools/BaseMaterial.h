@@ -7,16 +7,41 @@
 
 
 #include "RawShader.h"
-#include "FileTexture.h"
+#include "RawTexture.h"
+#include <GLM/glm.h>
+#include <GLM/gtc/type_ptr.h>
 #include <list>
+
+#define GLSL(src) #src
+
+struct MaterialTextureUnit {
+    std::string uniformName;
+    int glTextureUnit;
+    RawTexture *texture;
+    MaterialTextureUnit() {}
+    MaterialTextureUnit(std::string name, int unit, RawTexture* tex) {
+        uniformName = name; glTextureUnit = unit; texture = tex;
+    }
+};
 
 class BaseMaterial {
 public:
     BaseMaterial();
+    BaseMaterial(RawShader* shader);
+    BaseMaterial(RawShader* shader, std::list<MaterialTextureUnit> textures);
 
-    void setShader();
-    void setTextures();
+    virtual void setMVPUniform(glm::mat4 M, glm::mat4 V, glm::mat4 P);
+
+    virtual void setShader(RawShader *newShader);
+    virtual void setTextures(std::list<MaterialTextureUnit> newTextures);
+    virtual void defaultShaderSetup();
+
+    void bind();
+    void unbind();
+    void reload();
+    RawShader* getShader();
+
 private:
     RawShader *shader;
-    std::list<FileTexture *> textures;
+    std::list<MaterialTextureUnit> textures;
 };

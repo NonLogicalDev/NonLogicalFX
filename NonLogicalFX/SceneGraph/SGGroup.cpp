@@ -46,7 +46,9 @@ void SGGroup::applyTransform(glm::mat4 M) {
     this->M = M * this->M;
 }
 
-void SGGroup::updateGlobalUniformsForShader(RawShader *shader) {  }
+void SGGroup::updateGlobalUniformsForMaterial(BaseMaterial *material) {
+    if(parent) parent->updateGlobalUniformsForMaterial(material);
+}
 
 void SGGroup::reload() {
     for(SGNode* node : children) {
