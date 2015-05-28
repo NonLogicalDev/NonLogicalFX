@@ -22,7 +22,7 @@ public:
                GLint border, GLenum format,
                GLenum type, void const* data);
 
-    void loadTexture(GLint level, GLint internalFormat,
+    void loadTexture(GLuint lid, GLint level, GLint internalFormat,
                      int width, int height,
                      GLint border, GLenum format,
                      GLenum type, void const* data);

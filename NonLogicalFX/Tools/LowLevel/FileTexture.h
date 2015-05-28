@@ -6,25 +6,18 @@
 #pragma once
 
 #include "OpenGL_HEADER.h"
+#include "RawTexture.h"
 #include <string>
 #include <vector>
 #include <sstream>
 
-class FileTexture
-{
+class FileTexture : public RawTexture {
 public:
-    unsigned int id;
-    GLenum texUnit;
-    static FileTexture * emptyTexture;
-    bool bound;
-
     FileTexture();
     FileTexture(std::string fname);
     virtual ~FileTexture();
 
     void reload();
-    void bind(GLenum texUnit);
-    void unbind();
 
     void loadFromFile(const char * filename);
 

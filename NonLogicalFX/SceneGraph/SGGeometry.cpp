@@ -16,11 +16,11 @@ SGGeometry::SGGeometry() :
 }
 
 void SGGeometry::bindTextures() {
-    FileTexture::emptyTexture->bind(GL_TEXTURE0);
+    RawTexture::emptyTexture->bind(GL_TEXTURE0);
 }
 
 void SGGeometry::unbindTextures() {
-    FileTexture::emptyTexture->unbind();
+    RawTexture::emptyTexture->unbind();
 }
 
 void SGGeometry::render(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
