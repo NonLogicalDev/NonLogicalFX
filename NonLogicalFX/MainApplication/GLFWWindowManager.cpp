@@ -47,6 +47,8 @@ GLFWWindowManager::GLFWWindowManager(char const *title, int width, int height) {
 }
 
 void GLFWWindowManager::buildScene() {
+    fbTarget = new SGViewPortHUD();
+
     // Setting up camera
     glm::vec3 eye(0.0f, 0.0f, 30.0f);
     glm::vec3 up(0.0f, 1.0f, 0.0f);
@@ -151,7 +153,9 @@ void GLFWWindowManager::draw() {
     // ===========================================================================
     /* Make our background black */
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glEnable(GL_DEPTH_TEST);
+
+    int width, height;
+    glfwGetWindowSize(window, &width, &height);
 
     root.render();
 
@@ -169,6 +173,7 @@ void GLFWWindowManager::setUpOpenGL() {
     glfwSwapInterval(1);
     glClearColor(0, 0, 0, 0);
     glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
 }
 
 void GLFWWindowManager::setUpOpenGLProfile() {

@@ -31,17 +31,9 @@ protected:
     void emitLine();
     void emitStrip();
 
-    void generateVertexArray();
-    void bindVertexArray();
-    void deleteVertexArrayAndBuffers();
-
-    void generateAndBindBuffer(GLuint &buffer, bool record = false);
-    void clearBuffers();
-
     void constructVertexAttribute(GLuint loc, void (*lambdaCreate)(GLuint, std::vector<long>), GLuint &buffer, bool purgeBuffer);
 
 private:
-    std::vector<GLuint> buffers;
 
     glm::vec3 curNormal;
     glm::vec2 curTexCoord;
@@ -52,6 +44,7 @@ private:
     std::vector<float> texCords;
     std::vector<float> finalGeometry;
     std::vector<long> indexes;
+
 };
 
 

@@ -114,3 +114,7 @@ void BaseMaterial::reload() {
 RawShader *BaseMaterial::getShader() {
     return shader;
 }
+
+void BaseMaterial::clearTextures() {
+    textures.clear();
+}

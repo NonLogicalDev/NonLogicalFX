@@ -12,7 +12,6 @@
 #include <GLM/gtc/type_ptr.h>
 #include <list>
 
-#define GLSL(src) #src
 
 struct MaterialTextureUnit {
     std::string uniformName;
@@ -40,6 +39,8 @@ public:
     void unbind();
     void reload();
     RawShader* getShader();
+
+    void clearTextures();
 
 private:
     RawShader *shader;

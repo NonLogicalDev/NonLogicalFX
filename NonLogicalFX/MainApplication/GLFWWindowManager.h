@@ -12,6 +12,7 @@
 #include "OpenGL_HEADER.h"
 #include "FileShader.h"
 #include "SGRoot.h"
+#include "SGViewPortHUD.h"
 
 class GLFWWindowManager {
 public:
@@ -20,6 +21,7 @@ public:
     SGRoot root;
     SGGroup *skybox;
     SGGroup *scene;
+    SGViewPortHUD *fbTarget;
 private:
     GLFWwindow *window;
     FileShader *shader;
