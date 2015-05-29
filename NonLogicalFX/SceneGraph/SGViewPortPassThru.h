@@ -9,9 +9,9 @@
 #include "SGGeometry.h"
 #include "FXShader.h"
 
-class SGViewPortHUD : public SGGeometry {
+class SGViewPortPassThru : public SGGeometry {
 public:
-    SGViewPortHUD();
+    SGViewPortPassThru();
 
     // Interface ======================================================
     virtual void constructGeometry();
@@ -25,6 +25,10 @@ public:
     void clearTexures();
 
     void render();
+    std::vector<float> verticies;
+
+    void makePassThru();
+    FXShader *passThroughShader;
 };
 
 

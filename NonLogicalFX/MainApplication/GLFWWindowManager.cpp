@@ -44,9 +44,16 @@ GLFWWindowManager::GLFWWindowManager(char const *title, int width, int height) {
     root.setGlobalUniformUpdateCallback([this](BaseMaterial *material){
         this->handleShaderUniformUpdate(material);
     });
+
+    this->deferredRenderPass = new RawFrameBuffer();
+    this->uvTexture = new FileTexture("UVTEST.png");
+    fbPassThru = new SGViewPortPassThru();
+    this->blurShader = new FXShader("PostProcessTest");
+    fbPassThru->setFXShader(blurShader);
 }
 
 void GLFWWindowManager::buildScene() {
+
     // Setting up camera
     glm::vec3 eye(0.0f, 0.0f, 30.0f);
     glm::vec3 up(0.0f, 1.0f, 0.0f);
@@ -73,6 +80,12 @@ void GLFWWindowManager::updateProjectionMatrix() {
     glfwGetWindowSize(window, &width, &height);
     float aspect = (float) width / (float) height;
     root.P = glm::perspective(20.0f, aspect, 1.0f, 1000.0f);
+
+    if (texture1) delete texture1;
+    texture1 = new RawTexture(GL_RGB16, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
+    if (texture2) delete texture2;
+    texture2 = new RawTexture(GL_RGB16, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 }
 
 
@@ -95,7 +108,7 @@ void GLFWWindowManager::handleCallbacks() {
 
             }
             case 'R': {
-                root.reload();
+                state.w->reload();
             }
             default:
                 break;
@@ -151,9 +164,49 @@ void GLFWWindowManager::draw() {
     // ===========================================================================
     /* Make our background black */
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glEnable(GL_DEPTH_TEST);
+
+    // Geometry Pass ==============
+    deferredRenderPass->bind(GL_FRAMEBUFFER);
+    deferredRenderPass->attachToTexture2D(GL_COLOR_ATTACHMENT0, texture1);
 
     root.render();
+
+    deferredRenderPass->unbind();
+    // Blur H Pass ================
+    deferredRenderPass->bind(GL_FRAMEBUFFER);
+    deferredRenderPass->attachToTexture2D(GL_COLOR_ATTACHMENT0, texture2);
+    fbPassThru->setFXShader(blurShader);
+    fbPassThru->setUpdateUniformCallback([](RawShader *s){
+        glUniform1i(s->uniform("passThrough"), 0);
+        glUniform1i(s->uniform("iDirection"), 1);
+    });
+
+    texture1->bind(GL_TEXTURE0);
+    fbPassThru->render();
+    texture1->unbind();
+
+    deferredRenderPass->unbind();
+
+    // Blur V Pass =================
+    deferredRenderPass->bind(GL_FRAMEBUFFER);
+    deferredRenderPass->attachToTexture2D(GL_COLOR_ATTACHMENT0, texture1);
+    fbPassThru->setFXShader(blurShader);
+    fbPassThru->setUpdateUniformCallback([](RawShader *s){
+        glUniform1i(s->uniform("passThrough"), 0);
+        glUniform1i(s->uniform("iDirection"), 0);
+    });
+
+    texture2->bind(GL_TEXTURE0);
+    fbPassThru->render();
+    texture2->unbind();
+
+    deferredRenderPass->unbind();
+
+    // Image Pass ===================
+    texture1->bind(GL_TEXTURE0);
+    fbPassThru->makePassThru();
+
+    fbPassThru->render();
 
     glfwSwapBuffers(window);
     // ===========================================================================
@@ -169,6 +222,7 @@ void GLFWWindowManager::setUpOpenGL() {
     glfwSwapInterval(1);
     glClearColor(0, 0, 0, 0);
     glEnable(GL_CULL_FACE);
+    glEnable(GL_DEPTH_TEST);
 }
 
 void GLFWWindowManager::setUpOpenGLProfile() {
@@ -181,5 +235,10 @@ void GLFWWindowManager::setUpOpenGLProfile() {
     glfwWindowHint(GLFW_DOUBLEBUFFER, 1);
     glfwWindowHint(GLFW_DEPTH_BITS, 24);
 
-    glfwWindowHint(GLFW_SAMPLES, 8);
+    glfwWindowHint(GLFW_SAMPLES, 2);
+}
+
+void GLFWWindowManager::reload() {
+    root.reload();
+    blurShader->reload();
 }

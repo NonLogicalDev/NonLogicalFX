@@ -9,7 +9,7 @@
 #include "RawTexture.h"
 
 class RawFrameBuffer {
-
+public:
     RawFrameBuffer();
     virtual ~RawFrameBuffer();
 

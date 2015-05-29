@@ -15,6 +15,7 @@ SGGeometry::SGGeometry() :
         drawMode(GL_TRIANGLES),
         material(nullptr)
 {
+    parent = nullptr;
 }
 
 
@@ -22,6 +23,7 @@ void SGGeometry::render(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
     if (verticyCount > 0 && vertexArrayBuffer != 0 && material != nullptr) {
         material->bind();
         material->setMVPUniform(M, V, P);
+        updateUniforms();
 
         glBindVertexArray(vertexArrayBuffer);
         if(parent) parent->updateGlobalUniformsForMaterial(material);
@@ -78,9 +80,6 @@ void SGGeometry::generateVertexArray() {
 
 void SGGeometry::deleteVertexArrayAndBuffers() {
     if (vertexArrayBuffer != 0) {
-//        glDisableVertexAttribArray(0);
-//        glDisableVertexAttribArray(1);
-//        glDisableVertexAttribArray(2);
         clearBuffers();
         glDeleteVertexArrays(1, &vertexArrayBuffer);
     }

@@ -12,6 +12,9 @@
 #include "OpenGL_HEADER.h"
 #include "FileShader.h"
 #include "SGRoot.h"
+#include "SGViewPortPassThru.h"
+#include "FileTexture.h"
+#include "RawFrameBuffer.h"
 
 class GLFWWindowManager {
 public:
@@ -20,9 +23,13 @@ public:
     SGRoot root;
     SGGroup *skybox;
     SGGroup *scene;
+    SGViewPortPassThru *fbPassThru;
+    void reload();
 private:
     GLFWwindow *window;
     FileShader *shader;
+    RawFrameBuffer *deferredRenderPass;
+    RawFrameBuffer *blurPassV;
 
     void update();
     void draw();
@@ -38,4 +45,10 @@ private:
     void buildScene();
 
     void updateProjectionMatrix();
+
+    FileTexture *uvTexture;
+    RawTexture *texture1;
+    RawTexture *texture2;
+
+    FXShader *blurShader;
 };

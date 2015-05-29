@@ -15,7 +15,7 @@ FileShader::FileShader(char const *name) {
     std::stringstream Shader;
     Shader << SHADER_DIR;
     Shader << name << ".glsl";
-    this->combFilename = combFilename;
+    this->combFilename = Shader.str();
 
     std::string vertexSource, fragmentSource;
     bool success = readFromCombFile(Shader.str().c_str(), &vertexSource, &fragmentSource, name);

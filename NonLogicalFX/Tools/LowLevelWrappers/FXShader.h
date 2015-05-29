@@ -11,10 +11,16 @@
 
 class FXShader : public FileShader {
 public:
-    FXShader(std::string fxShaderSource, std::string name, bool isFile = false);
+    FXShader(std::string fxShaderSource);
+    FXShader(std::string fxShaderSource, std::string name);
+    FXShader(bool isFile, std::string fxShaderSource, std::string name);
+
+
     std::string vertexShader;
     std::string shaderFile;
     virtual void reload();
+
+    void initialize(bool isFile, std::string fxShaderSource, std::string name);
 };
 
 
