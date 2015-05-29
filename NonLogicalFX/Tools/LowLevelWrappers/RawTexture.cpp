@@ -68,6 +68,8 @@ void RawTexture::loadTexture(GLint level, GLint internalFormat, int width, int h
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexImage2D(GL_TEXTURE_2D, level, internalFormat, width, height, border, format, type, data);
     glBindTexture(GL_TEXTURE_2D, 0);
+
+    destroyed = false;
 }
 
 // Stubs

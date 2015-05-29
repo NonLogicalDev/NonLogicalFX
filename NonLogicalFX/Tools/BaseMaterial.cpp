@@ -46,7 +46,7 @@ BaseMaterial::BaseMaterial(RawShader *shader, std::list<MaterialTextureUnit> tex
 //}
 
 void BaseMaterial::defaultShaderSetup() {
-    std::__1::string vertexShader = GLSL(
+    std::string vertexShader = GLSL(
 
     void main() {
         gl_Position = _MVP * vec4(in_Position, 1.0);
