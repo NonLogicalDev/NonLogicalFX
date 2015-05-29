@@ -16,6 +16,7 @@
 		B1EAA208CF1C3426D0B28376 /* ShaderLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAADB5D4BC55CA0328F216 /* ShaderLibrary.cpp */; };
 		B1EAA2C380462FB7AD0EFE67 /* SGRoot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA8848E168B17DFE40CC7 /* SGRoot.cpp */; };
 		B1EAA37C78C2E2582CF2B99A /* FileShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAACC5B84084EB869C4039 /* FileShader.cpp */; };
+		B1EAA46C7A5A4836AF47C94A /* SGViewPortHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAAA32633A2164DFDB3EEC /* SGViewPortHUD.cpp */; };
 		B1EAA4C015999F07E90C0D49 /* Skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA5CA132776D30FC6E954 /* Skybox.cpp */; };
 		B1EAA727F12DED0875E3EE75 /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA27F4CB4A79E67B9A10F /* Terrain.cpp */; };
 		B1EAA7B895E73669F8D6EA45 /* RawFrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA7E9E955947E36F1679D /* RawFrameBuffer.cpp */; };
@@ -72,6 +73,7 @@
 		B1EAA8AAC6E0550BB44070FA /* UVTest.glsl */ = {isa = PBXFileReference; lastKnownFileType = file.glsl; path = UVTest.glsl; sourceTree = "<group>"; };
 		B1EAA9DAA0DB1B9D0CB0286E /* FXShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FXShader.cpp; sourceTree = "<group>"; };
 		B1EAA9FE88F687E038EE7DA0 /* RawFrameBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawFrameBuffer.h; sourceTree = "<group>"; };
+		B1EAAA32633A2164DFDB3EEC /* SGViewPortHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGViewPortHUD.cpp; sourceTree = "<group>"; };
 		B1EAAA69FA2B061B6BA90C1A /* SGGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGGeometry.cpp; sourceTree = "<group>"; };
 		B1EAAB120BD43062C372CBCC /* BaseMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMaterial.h; sourceTree = "<group>"; };
 		B1EAAB38D572E10C052F8BAA /* SGIndexedGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGIndexedGeometry.h; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		B1EAADE75F89A1B2B2F1F156 /* SGRoot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGRoot.h; sourceTree = "<group>"; };
 		B1EAAE0FC9B65809FF4021B8 /* RawTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RawTexture.h; sourceTree = "<group>"; };
 		B1EAAE35673A121B769EC1B1 /* SGNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNode.h; sourceTree = "<group>"; };
+		B1EAAE66DF98346638E9CB91 /* SGViewPortHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGViewPortHUD.h; sourceTree = "<group>"; };
 		B1EAAF0EDBA1710E3EDC1A93 /* FileShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileShader.h; sourceTree = "<group>"; };
 		B1EAAF4A830CE4D6EC81B009 /* SimplePlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePlane.h; sourceTree = "<group>"; };
 		B1EAAF760A30D2A7C19D4345 /* SGGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGroup.h; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				B1EAADE75F89A1B2B2F1F156 /* SGRoot.h */,
 				B1EAA5615176511E0E5751E6 /* SGIndexedGeometry.cpp */,
 				B1EAAB38D572E10C052F8BAA /* SGIndexedGeometry.h */,
+				B1EAAE66DF98346638E9CB91 /* SGViewPortHUD.h */,
+				B1EAAA32633A2164DFDB3EEC /* SGViewPortHUD.cpp */,
 			);
 			path = SceneGraph;
 			sourceTree = "<group>";
@@ -373,6 +378,7 @@
 				B1EAA727F12DED0875E3EE75 /* Terrain.cpp in Sources */,
 				B1EAA1CAA7F029710E308FF6 /* FXShader.cpp in Sources */,
 				B1EAA7B895E73669F8D6EA45 /* RawFrameBuffer.cpp in Sources */,
+				B1EAA46C7A5A4836AF47C94A /* SGViewPortHUD.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
