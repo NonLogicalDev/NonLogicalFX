@@ -39,10 +39,7 @@ void FileTexture::loadFromFile(const char * filename) {
     FIBITMAP *bitmap = FreeImage_ConvertTo32Bits(imagen);
     FreeImage_Unload(imagen);
 
-    GLuint lid;     // storage for one texture
-    glGenTextures(1, &lid);
-    loadTexture(lid, 0, GL_RGBA, mlWidth, mlHeight, 0, GL_BGRA, GL_UNSIGNED_BYTE, (GLvoid*)FreeImage_GetBits(bitmap));
-    id = lid;
+    loadTexture(0, GL_RGBA, mlWidth, mlHeight, 0, GL_BGRA, GL_UNSIGNED_BYTE, (GLvoid*)FreeImage_GetBits(bitmap));
 
     FreeImage_Unload(bitmap);
 }

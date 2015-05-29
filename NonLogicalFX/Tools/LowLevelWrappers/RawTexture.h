@@ -9,30 +9,33 @@
 #include <string>
 
 class RawTexture {
-
 public:
-    unsigned int id;
-    GLenum texUnit;
     static RawTexture * emptyTexture;
-    bool bound;
 
     RawTexture();
     RawTexture(GLint internalFormat,
                int width, int height,
                GLint border, GLenum format,
                GLenum type, void const* data);
-
-    void loadTexture(GLuint lid, GLint level, GLint internalFormat,
-                     int width, int height,
-                     GLint border, GLenum format,
-                     GLenum type, void const* data);
-
     virtual ~RawTexture();
 
-    virtual void reload();
-
+    void destroy();
     void bind(GLenum texUnit);
     void unbind();
+
+    // Abstract function that reloads an reloads texture in higher classes
+    virtual void reload();
+
+    unsigned int id;
+    GLenum texUnit;
+protected:
+    void loadTexture(GLint level, GLint internalFormat,
+            int width, int height,
+            GLint border, GLenum format,
+            GLenum type, void const* data);
+
+private:
+
+    bool destroyed;
+    bool bound;
 };
-
-
