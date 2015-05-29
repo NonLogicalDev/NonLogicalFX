@@ -41,23 +41,20 @@ void SGIndexedGeometry::constructGeometry() {
     GLsizei stride = size * sizeof(float);
 
     // Recording data into a buffer
-    generateAndBindBuffer(vbo);
+    generateAndBindBuffer(&vbo);
     glBufferData(GL_ARRAY_BUFFER, finalGeometry.size() * sizeof(float), &finalGeometry[0], GL_STATIC_DRAW);
 
     // Binding position
     GLuint pLoc = 0;
-    glEnableVertexAttribArray(pLoc);
-    glVertexAttribPointer(pLoc, 3, GL_FLOAT, GL_FALSE, stride, 0);
+    bindVertexAttribute(pLoc, GL_FLOAT, 3, stride, 0, GL_FALSE);
 
     // Binding normals
     GLuint nLoc = 1;
-    glEnableVertexAttribArray(nLoc);
-    glVertexAttribPointer(nLoc, 3, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(3 * sizeof(float)));
+    bindVertexAttribute(nLoc, GL_FLOAT, 3, stride, 3*sizeof(float), GL_FALSE);
 
     // Binding texture coordinates
     GLuint tLoc = 2;
-    glEnableVertexAttribArray(tLoc);
-    glVertexAttribPointer(tLoc, 2, GL_FLOAT, GL_FALSE, stride, (GLvoid*)(6 * sizeof(float)));
+    bindVertexAttribute(tLoc, GL_FLOAT, 2, stride, 6*sizeof(float), GL_FALSE);
 
     verticyCount = finalGeometry.size() / size;
 
@@ -66,36 +63,6 @@ void SGIndexedGeometry::constructGeometry() {
     texCords.clear();
 
     finalizeGeometry();
-}
-
-void SGIndexedGeometry::clearBuffers() {
-    glDeleteBuffers((GLsizei)buffers.size(), &buffers[0]);
-    buffers.clear();
-}
-
-void SGIndexedGeometry::generateAndBindBuffer(GLuint &buffer, bool record) {
-    glGenBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
-    if(record) buffers.push_back(buffer);
-}
-
-void SGIndexedGeometry::bindVertexArray() {
-    glBindVertexArray(vertexArrayBuffer);
-}
-
-void SGIndexedGeometry::generateVertexArray() {
-    deleteVertexArrayAndBuffers();
-    glGenVertexArrays(1, &vertexArrayBuffer);
-}
-
-void SGIndexedGeometry::deleteVertexArrayAndBuffers() {
-    if (vertexArrayBuffer != 0) {
-        glDisableVertexAttribArray(0);
-        glDisableVertexAttribArray(1);
-        glDisableVertexAttribArray(2);
-        glDeleteBuffers(1, &vbo);
-        glDeleteVertexArrays(1, &vertexArrayBuffer);
-    }
 }
 
 void SGIndexedGeometry::addVertex(float x, float y, float z) {
@@ -157,7 +124,7 @@ void SGIndexedGeometry::constructVertexAttribute(GLuint loc, void (*lambdaCreate
     if (purgeBuffer) glDeleteBuffers(1, &buffer);
 
     bindVertexArray();
-    generateAndBindBuffer(buffer, true);
+    generateAndBindBuffer(&buffer, true);
 
     lambdaCreate(loc, indexes);
 }
