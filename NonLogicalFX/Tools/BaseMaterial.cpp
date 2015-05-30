@@ -93,3 +93,7 @@ RawShader *BaseMaterial::getShader() {
 void BaseMaterial::clearTextures() {
     textures.clear();
 }
+
+std::list<MaterialTextureUnit> BaseMaterial::getTextures() {
+    return textures;
+}

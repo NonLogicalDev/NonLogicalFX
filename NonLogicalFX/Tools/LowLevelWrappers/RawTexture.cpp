@@ -17,6 +17,7 @@ RawTexture::RawTexture() {
 
 RawTexture::RawTexture(GLint internalFormat, int width, int height, GLint border, GLenum format, GLenum type, void const *data) {
     destroyed = false;
+    id = 0;
     loadTexture(0, internalFormat, width, height, border, format, type, data);
 }
 

@@ -18,7 +18,7 @@ struct MaterialTextureUnit {
     int glTextureUnit;
     RawTexture *texture;
     MaterialTextureUnit() {}
-    MaterialTextureUnit(std::string name, int unit, RawTexture* tex) {
+    MaterialTextureUnit(std::string name, RawTexture *tex, int unit) {
         uniformName = name; glTextureUnit = unit; texture = tex;
     }
 };
@@ -41,6 +41,7 @@ public:
     RawShader* getShader();
 
     void clearTextures();
+    std::list<MaterialTextureUnit> getTextures();
 
 private:
     RawShader *shader;

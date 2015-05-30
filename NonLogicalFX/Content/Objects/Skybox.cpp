@@ -8,7 +8,7 @@
 Skybox::Skybox(const char *cubeMapFileName) {
     material = new BaseMaterial(
         ShaderLibrary::get(SL_BASIC_3D_SHADER),{
-        MaterialTextureUnit("baseTexture", 0, new FileTexture("skybox2.jpg"))
+            MaterialTextureUnit("baseTexture", new FileTexture("skybox2.jpg"), 0)
     });
     constructGeometry();
 }

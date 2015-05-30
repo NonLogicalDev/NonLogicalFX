@@ -11,7 +11,7 @@ SimpleCube::SimpleCube() {
 //    texture = new FileTexture("UVTEST.png");
     material = new BaseMaterial(
             ShaderLibrary::get(SL_UV_TEST), {
-            MaterialTextureUnit("uvTexture", 0, new FileTexture("UVTEST.png"))
+            MaterialTextureUnit("uvTexture", new FileTexture("UVTEST.png"), 0)
     });
     constructGeometry();
 }

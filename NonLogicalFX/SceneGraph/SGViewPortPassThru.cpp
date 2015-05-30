@@ -33,7 +33,7 @@ void SGViewPortPassThru::makePassThru() {
         passThroughShader = shader;
     }
     setFXShader(passThroughShader);
-    setUpdateUniformCallback([](RawShader *s) {
+    setUniforms([](RawShader *s) {
         glUniform1i(s->uniform("passThrough"), 0);
     });
 }
@@ -91,11 +91,14 @@ void SGViewPortPassThru::setFXShader(FXShader *shader) {
     updateUniformsCB = nullptr;
 }
 
-void SGViewPortPassThru::addTextures(std::list<MaterialTextureUnit> newTextures) {
-
+void SGViewPortPassThru::setTextures(std::list<MaterialTextureUnit> newTextures) {
+    material->setTextures(newTextures);
 }
 
 void SGViewPortPassThru::clearTexures() {
-    //material->clearTextures();
+    material->clearTextures();
 }
 
+std::list<MaterialTextureUnit> SGViewPortPassThru::getTextures() {
+   return material->getTextures();
+}

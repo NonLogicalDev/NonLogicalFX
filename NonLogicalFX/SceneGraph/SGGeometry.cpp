@@ -90,7 +90,7 @@ void SGGeometry::bindVertexAttribute(GLuint pLoc, GLenum type, GLint size, GLsiz
     glVertexAttribPointer(pLoc, size, type, normalize, stride, (void*)offset);
 }
 
-void SGGeometry::setUpdateUniformCallback(std::function<void(RawShader *)> callback) {
+void SGGeometry::setUniforms(std::function<void(RawShader *)> callback) {
     updateUniformsCB = callback;
 }
 

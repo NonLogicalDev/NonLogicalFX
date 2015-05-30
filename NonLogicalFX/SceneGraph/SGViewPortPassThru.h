@@ -21,7 +21,8 @@ public:
     // ================================================================
 
     void setFXShader(FXShader *shader);
-    void addTextures(std::list<MaterialTextureUnit> newTextures);
+    std::list<MaterialTextureUnit> getTextures();
+    void setTextures(std::list<MaterialTextureUnit> newTextures);
     void clearTexures();
 
     void render();

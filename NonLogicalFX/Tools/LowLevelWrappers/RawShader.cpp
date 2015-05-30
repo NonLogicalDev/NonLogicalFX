@@ -54,7 +54,7 @@ void RawShader::bind() {
     }
 
     if (destroyed) {
-        fprintf(stderr, "WARNING! Binding destroyed shader.");
+        fprintf(stderr, "WARNING! Binding destroyed shader.\n");
     }
 }
 

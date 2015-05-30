@@ -28,8 +28,9 @@ public:
 private:
     GLFWwindow *window;
     FileShader *shader;
-    RawFrameBuffer *deferredRenderPass;
-    RawFrameBuffer *blurPassV;
+    RawFrameBuffer *deferredRenderer1;
+    RawFrameBuffer *deferredRenderer2;
+    RawFrameBuffer *defaultRenderer;
 
     void update();
     void draw();

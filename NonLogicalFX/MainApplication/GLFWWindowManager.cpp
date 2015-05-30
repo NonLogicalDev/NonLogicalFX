@@ -34,6 +34,9 @@ GLFWWindowManager::GLFWWindowManager(char const *title, int width, int height) {
 
     // Standard settings
     setUpOpenGL();
+    this->defaultRenderer   = RawFrameBuffer::defaultFramebuffer();
+    this->deferredRenderer1 = new RawFrameBuffer();
+    this->deferredRenderer2 = new RawFrameBuffer();
 
     // Initiating shader library for our obejects
     ShaderLibrary::initLibrary();
@@ -45,7 +48,6 @@ GLFWWindowManager::GLFWWindowManager(char const *title, int width, int height) {
         this->handleShaderUniformUpdate(material);
     });
 
-    this->deferredRenderPass = new RawFrameBuffer();
     this->uvTexture = new FileTexture("UVTEST.png");
     fbPassThru = new SGViewPortPassThru();
     this->blurShader = new FXShader("PostProcessTest");
@@ -53,6 +55,8 @@ GLFWWindowManager::GLFWWindowManager(char const *title, int width, int height) {
 }
 
 void GLFWWindowManager::buildScene() {
+    int width, height;
+    glfwGetWindowSize(window, &width, &height);
 
     // Setting up camera
     glm::vec3 eye(0.0f, 0.0f, 30.0f);
@@ -73,6 +77,9 @@ void GLFWWindowManager::buildScene() {
 
     // Add a scene which consists of just a cube
     scene->addChild(new SimpleCube());
+
+    float s = 1.0;
+
 }
 
 void GLFWWindowManager::updateProjectionMatrix() {
@@ -81,11 +88,14 @@ void GLFWWindowManager::updateProjectionMatrix() {
     float aspect = (float) width / (float) height;
     root.P = glm::perspective(20.0f, aspect, 1.0f, 1000.0f);
 
+    float s = 0.9;
+
     if (texture1) delete texture1;
-    texture1 = new RawTexture(GL_RGB16, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    texture1 = new RawTexture(GL_RGB16, width * s, height * s, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 
     if (texture2) delete texture2;
-    texture2 = new RawTexture(GL_RGB16, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    texture2 = new RawTexture(GL_RGB16, width * s, height * s, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+
 }
 
 
@@ -163,50 +173,65 @@ void GLFWWindowManager::handleShaderUniformUpdate(BaseMaterial *material) {
 void GLFWWindowManager::draw() {
     // ===========================================================================
     /* Make our background black */
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    //deferredRenderer2->attachToTexture2D(GL_COLOR_ATTACHMENT0, texture2);
 
     // Geometry Pass ==============
-    deferredRenderPass->bind(GL_FRAMEBUFFER);
-    deferredRenderPass->attachToTexture2D(GL_COLOR_ATTACHMENT0, texture1);
+//    deferredRenderer1->bind(GL_FRAMEBUFFER);
+//    deferredRenderer1->attachToTexture2D(GL_COLOR_ATTACHMENT0, texture1);
+//
+//    deferredRenderer1->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//    root.render();
+//
+//    deferredRenderer1->unbind();
 
-    root.render();
-
-    deferredRenderPass->unbind();
-    // Blur H Pass ================
-    deferredRenderPass->bind(GL_FRAMEBUFFER);
-    deferredRenderPass->attachToTexture2D(GL_COLOR_ATTACHMENT0, texture2);
-    fbPassThru->setFXShader(blurShader);
-    fbPassThru->setUpdateUniformCallback([](RawShader *s){
-        glUniform1i(s->uniform("passThrough"), 0);
-        glUniform1i(s->uniform("iDirection"), 1);
+    defaultRenderer->bind(GL_FRAMEBUFFER);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    fbPassThru->makePassThru();
+    fbPassThru->setTextures({
+            MaterialTextureUnit("passThrough", uvTexture, 0)
     });
 
-    texture1->bind(GL_TEXTURE0);
     fbPassThru->render();
-    texture1->unbind();
 
-    deferredRenderPass->unbind();
-
-    // Blur V Pass =================
-    deferredRenderPass->bind(GL_FRAMEBUFFER);
-    deferredRenderPass->attachToTexture2D(GL_COLOR_ATTACHMENT0, texture1);
-    fbPassThru->setFXShader(blurShader);
-    fbPassThru->setUpdateUniformCallback([](RawShader *s){
-        glUniform1i(s->uniform("passThrough"), 0);
-        glUniform1i(s->uniform("iDirection"), 0);
-    });
-
-    texture2->bind(GL_TEXTURE0);
-    fbPassThru->render();
-    texture2->unbind();
-
-    deferredRenderPass->unbind();
+//    // Blur H Pass ================
+//    deferredRenderer2->bind(GL_FRAMEBUFFER);
+//    deferredRenderer2->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//
+//    fbPassThru->setFXShader(blurShader);
+//    fbPassThru->setUniforms([](RawShader *s) {
+//        glUniform1i(s->uniform("iDirection"), 1);
+//    });
+//    fbPassThru->setTextures({
+//            MaterialTextureUnit("passThrough", deferredRenderer1->texture, 0)
+//    });
+//
+//    fbPassThru->render();
+//
+//    // Blur V Pass =================
+//    deferredRenderer1->bind(GL_FRAMEBUFFER);
+//    deferredRenderer1->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//
+//    fbPassThru->setFXShader(blurShader);
+//    fbPassThru->setUniforms([](RawShader *s) {
+//        glUniform1i(s->uniform("iDirection"), 0);
+//    });
+//    fbPassThru->setTextures({
+//            MaterialTextureUnit("passThrough", deferredRenderer2->texture, 0)
+//    });
+//
+//    fbPassThru->render();
+//
+//    deferredRenderer1->unbind();
 
     // Image Pass ===================
-    texture1->bind(GL_TEXTURE0);
-    fbPassThru->makePassThru();
-
-    fbPassThru->render();
+//    defaultRenderer->bind(GL_FRAMEBUFFER);
+//    defaultRenderer->clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//    fbPassThru->makePassThru();
+//    fbPassThru->setTextures({
+//            MaterialTextureUnit("passThrough", texture1, 0)
+//    });
+//
+//    fbPassThru->render();
 
     glfwSwapBuffers(window);
     // ===========================================================================
