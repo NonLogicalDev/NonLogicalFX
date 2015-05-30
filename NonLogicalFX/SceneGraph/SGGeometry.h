@@ -24,7 +24,7 @@ public:
     virtual void render(glm::mat4 M, glm::mat4 V, glm::mat4 P);
     virtual void updateGlobalUniformsForMaterial(BaseMaterial *material);
 
-    void setUpdateUniformCallback(std::function<void (RawShader*)> callback);
+    void setUniforms(std::function<void(RawShader *)> callback);
 protected:
     std::function<void (RawShader*)> updateUniformsCB;
 

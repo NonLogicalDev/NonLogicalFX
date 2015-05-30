@@ -28,8 +28,8 @@ public:
 private:
     GLFWwindow *window;
     FileShader *shader;
-    RawFrameBuffer *deferredRenderPass;
-    RawFrameBuffer *blurPassV;
+    RawFrameBuffer *deferredRenderPass1;
+    RawFrameBuffer *screenPass;
 
     void update();
     void draw();
@@ -51,4 +51,5 @@ private:
     RawTexture *texture2;
 
     FXShader *blurShader;
+    RawFrameBuffer *deferredRenderPass2;
 };

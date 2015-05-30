@@ -23,6 +23,9 @@ public:
     void bind(GLenum texUnit);
     void unbind();
 
+    void setInterpolation(GLint type);
+    void setWrap(GLint swrap, GLint twrap);
+
     // Abstract function that reloads an reloads texture in higher classes
     virtual void reload();
 

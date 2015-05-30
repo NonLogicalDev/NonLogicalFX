@@ -66,11 +66,23 @@ void RawTexture::loadTexture(GLint level, GLint internalFormat, int width, int h
     glBindTexture(GL_TEXTURE_2D, id);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexImage2D(GL_TEXTURE_2D, level, internalFormat, width, height, border, format, type, data);
     glBindTexture(GL_TEXTURE_2D, 0);
 
     destroyed = false;
 }
 
+void RawTexture::setWrap(GLint swrap, GLint twrap) {
+
+}
+
+void RawTexture::setInterpolation(GLint type) {
+
+}
+
+
 // Stubs
 void RawTexture::reload() {  }
+
