@@ -17,7 +17,7 @@ public:
     void bind(GLenum bindPoint);
     void unbind();
 
-    void attachToTexture2D(GLenum attachmentPoint, RawTexture* texture);
+    void attachToTexture2D(GLenum attachmentPoint, GLenum textureType, RawTexture *texture);
     RawTexture *getAttachedTexture();
 
     void clear(GLbitfield buffers);
@@ -27,12 +27,14 @@ public:
 
     static RawFrameBuffer *defaultFramebuffer();
 
+protected:
+        RawTexture *texture;
+
 private:
     RawFrameBuffer(bool defaultFB);
     void generateFramebuffer();
     bool destroyed;
     bool bound;
-    RawTexture *texture;
     static RawFrameBuffer *currentlyBound;
     static RawFrameBuffer *defaultFramebufferVar;
 };

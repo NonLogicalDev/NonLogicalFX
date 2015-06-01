@@ -18,6 +18,7 @@
 		B1EAA37C78C2E2582CF2B99A /* FileShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAACC5B84084EB869C4039 /* FileShader.cpp */; };
 		B1EAA46C7A5A4836AF47C94A /* SGViewPortPassThru.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAAA32633A2164DFDB3EEC /* SGViewPortPassThru.cpp */; };
 		B1EAA4C015999F07E90C0D49 /* Skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA5CA132776D30FC6E954 /* Skybox.cpp */; };
+		B1EAA5F21D3B3CE02BAA5257 /* TextureFramebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAAB5B6DB69939828FD5AD /* TextureFramebuffer.cpp */; };
 		B1EAA727F12DED0875E3EE75 /* Terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA27F4CB4A79E67B9A10F /* Terrain.cpp */; };
 		B1EAA7B895E73669F8D6EA45 /* RawFrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA7E9E955947E36F1679D /* RawFrameBuffer.cpp */; };
 		B1EAA8A1F159965B6F087E0E /* RawTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1EAA19DDA4E5D6BDD0F3D9E /* RawTexture.cpp */; };
@@ -48,6 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B1EAA01E48FDB27FCC71F8C9 /* NormalMapper.glsl */ = {isa = PBXFileReference; lastKnownFileType = file.glsl; path = NormalMapper.glsl; sourceTree = "<group>"; };
 		B1EAA0DCE907A1907872B7C1 /* UVTEST.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UVTEST.png; sourceTree = "<group>"; };
 		B1EAA0F3511436D7D152ADDA /* GLFWWindowManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLFWWindowManager.cpp; sourceTree = "<group>"; };
 		B1EAA104B7B7A14A7028E996 /* SimpleCube.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleCube.cpp; sourceTree = "<group>"; };
@@ -77,6 +79,8 @@
 		B1EAAA69FA2B061B6BA90C1A /* SGGeometry.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SGGeometry.cpp; sourceTree = "<group>"; };
 		B1EAAB120BD43062C372CBCC /* BaseMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMaterial.h; sourceTree = "<group>"; };
 		B1EAAB38D572E10C052F8BAA /* SGIndexedGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGIndexedGeometry.h; sourceTree = "<group>"; };
+		B1EAAB3FB91AF9C58B22E6A8 /* TextureFramebuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureFramebuffer.h; sourceTree = "<group>"; };
+		B1EAAB5B6DB69939828FD5AD /* TextureFramebuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureFramebuffer.cpp; sourceTree = "<group>"; };
 		B1EAAB70DA90C0F050674CB7 /* FileTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTexture.h; sourceTree = "<group>"; };
 		B1EAABB8A29B94ADD8FCBA92 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = ../../../../../Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = "<group>"; };
 		B1EAAC39280C84D9DC99E81E /* FXShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXShader.h; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				B1EAAC39280C84D9DC99E81E /* FXShader.h */,
 				B1EAA7E9E955947E36F1679D /* RawFrameBuffer.cpp */,
 				B1EAA9FE88F687E038EE7DA0 /* RawFrameBuffer.h */,
+				B1EAAB5B6DB69939828FD5AD /* TextureFramebuffer.cpp */,
+				B1EAAB3FB91AF9C58B22E6A8 /* TextureFramebuffer.h */,
 			);
 			path = LowLevelWrappers;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 				B1EAA7F882D3695D1B7F4E1D /* DepthShader.glsl */,
 				B1EAA5EA27F8FC4F681CDC77 /* Basic3DShader.glsl */,
 				B1EAAD1941DA39CFCDAC4E42 /* PostProcessTest.glsl */,
+				B1EAA01E48FDB27FCC71F8C9 /* NormalMapper.glsl */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -381,6 +388,7 @@
 				B1EAA1CAA7F029710E308FF6 /* FXShader.cpp in Sources */,
 				B1EAA7B895E73669F8D6EA45 /* RawFrameBuffer.cpp in Sources */,
 				B1EAA46C7A5A4836AF47C94A /* SGViewPortPassThru.cpp in Sources */,
+				B1EAA5F21D3B3CE02BAA5257 /* TextureFramebuffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

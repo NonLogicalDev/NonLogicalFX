@@ -1,6 +1,7 @@
 in vec2 fragCoord;
 
 uniform sampler2D passThrough;
+uniform sampler2D depthMap;
 uniform int iDirection;
 
 float noise(vec2 p) {
@@ -39,11 +40,12 @@ vec3 GaussianBlur( sampler2D tex0, vec2 centreUV, vec2 halfPixelOffset, vec2 pix
 }                       
 
 void main() {
+  float depth = abs(1.0 - (1.0 - texture(depthMap, fragCoord).r) * 10.0);
   vec2 uv = fragCoord;
   vec4 pC = texture(passThrough, uv);
 
   vec2 dir;
-  float step = 0.002 * (1 + sin(iGlobalTime)) * 0.5;
+  float step = 0.002 * depth;
   if (iDirection == 1) {
     dir = vec2(step, 0.0);
   } else {

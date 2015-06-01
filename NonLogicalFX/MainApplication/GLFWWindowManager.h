@@ -15,6 +15,7 @@
 #include "SGViewPortPassThru.h"
 #include "FileTexture.h"
 #include "RawFrameBuffer.h"
+#include "TextureFramebuffer.h"
 
 class GLFWWindowManager {
 public:
@@ -23,13 +24,21 @@ public:
     SGRoot root;
     SGGroup *skybox;
     SGGroup *scene;
-    SGViewPortPassThru *fbPassThru;
+    SGViewPortPassThru *screen;
+    glm::mat4 projectionMat;
+    glm::mat4 inverseProjection;
     void reload();
 private:
     GLFWwindow *window;
     FileShader *shader;
-    RawFrameBuffer *deferredRenderPass1;
+    RawShader *normalMapper;
     RawFrameBuffer *screenPass;
+    FXShader *blurShader;
+    FXShader *occlusionShader;
+    TextureFramebuffer *depthPass;
+    TextureFramebuffer *diffusePass;
+    TextureFramebuffer *normalPass;
+    TextureFramebuffer *occlusionPass;
 
     void update();
     void draw();
@@ -47,9 +56,12 @@ private:
     void updateProjectionMatrix();
 
     FileTexture *uvTexture;
-    RawTexture *texture1;
-    RawTexture *texture2;
 
-    FXShader *blurShader;
-    RawFrameBuffer *deferredRenderPass2;
+    RawTexture *noise;
+
+    void makeSSAOKernel();
+
+    std::vector<float> kernel;
+    FXShader *compositor;
+    TextureFramebuffer *occlusionPass2;
 };

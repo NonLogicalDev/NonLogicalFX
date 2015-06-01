@@ -42,25 +42,17 @@ void BaseMaterial::defaultShaderSetup() {
 }
 
 void BaseMaterial::setMVPUniform(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
-    GLint   MM = shader->uniform("_Model"),
-            VV = shader->uniform("_View"),
-            PP = shader->uniform("_Projection"),
-            MV = shader->uniform("_MVP");
-
-    glm::mat4 MVP = P * V * M;
-
-    glUniformMatrix4fv(MM, 1, GL_FALSE, glm::value_ptr(M));
-    glUniformMatrix4fv(VV, 1, GL_FALSE, glm::value_ptr(V));
-    glUniformMatrix4fv(PP, 1, GL_FALSE, glm::value_ptr(P));
-    glUniformMatrix4fv(MV, 1, GL_FALSE, glm::value_ptr(MVP));
+    shader->setMVPUniform(M, V, P);
 }
 
 void BaseMaterial::bind() {
     shader->bind();
+    int i = 0;
     for(MaterialTextureUnit texture : textures) {
-        texture.texture->bind(GL_TEXTURE0 + texture.glTextureUnit);
+        texture.texture->bind(GL_TEXTURE0 + i);
         GLuint loc = shader->uniform(texture.uniformName.c_str());
-        glUniform1i(loc, texture.glTextureUnit);
+        glUniform1i(loc, i);
+        i++;
     }
 }
 

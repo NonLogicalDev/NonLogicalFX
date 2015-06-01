@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
     glfwSetErrorCallback(errorCallback);
     if (!glfwInit()) { exit(EXIT_FAILURE); }
 
-    GLFWWindowManager window = GLFWWindowManager("NonlogicalFX", 512, 512);
+    GLFWWindowManager window = GLFWWindowManager("NonlogicalFX", 1024, 1024);
     window.runEventLoop();
 
     glfwTerminate();

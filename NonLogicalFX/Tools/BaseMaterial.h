@@ -18,6 +18,9 @@ struct MaterialTextureUnit {
     int glTextureUnit;
     RawTexture *texture;
     MaterialTextureUnit() {}
+    MaterialTextureUnit(std::string name, RawTexture* tex) {
+        uniformName = name; texture = tex;
+    }
     MaterialTextureUnit(std::string name, int unit, RawTexture* tex) {
         uniformName = name; glTextureUnit = unit; texture = tex;
     }

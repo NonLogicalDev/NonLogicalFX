@@ -12,6 +12,7 @@ class SGNode {
 protected:
 public:
     SGNode *parent;
+    virtual void renderWithShader(RawShader* altShader, glm::mat4 M, glm::mat4 V, glm::mat4 P) = 0;
     virtual void render(glm::mat4 M, glm::mat4 V, glm::mat4 P) = 0;
     virtual void updateGlobalUniformsForMaterial(BaseMaterial *material) = 0;
     virtual void update() = 0;

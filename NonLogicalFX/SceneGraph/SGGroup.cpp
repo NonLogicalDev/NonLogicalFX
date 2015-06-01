@@ -13,6 +13,13 @@ SGGroup::SGGroup(glm::mat4 M): M(M) {
     appliesTransform = true;
 }
 
+void SGGroup::renderWithShader(RawShader *altShader, glm::mat4 M, glm::mat4 V, glm::mat4 P) {
+    if (appliesTransform) M = this->M * M;
+    for(SGNode* node : children) {
+        node->renderWithShader(altShader, M, V, P);
+    }
+}
+
 void SGGroup::render(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
     if (appliesTransform) M = this->M * M;
     for(SGNode* node : children) {

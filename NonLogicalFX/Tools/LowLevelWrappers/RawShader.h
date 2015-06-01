@@ -6,6 +6,7 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
+#include <GLM/glm.h>
 #include <string>
 #include <vector>
 
@@ -52,6 +53,9 @@ public:
     virtual void reload();
 
     GLuint pid;
+
+    void setMVPUniform(glm::mat4 M, glm::mat4 V, glm::mat4 P);
+
 protected:
     bool compileShader(std::string shader, GLenum type, GLuint *compiledShaderOut);
     bool linkShaders(std::vector<GLuint> shaders, GLuint *linkedProgramOut);

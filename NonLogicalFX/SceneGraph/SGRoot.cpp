@@ -21,8 +21,16 @@ void SGRoot::render(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
     rootGroup->render(M, V, P);
 }
 
+void SGRoot::renderWithShader(RawShader *altShader, glm::mat4 M, glm::mat4 V, glm::mat4 P) {
+    rootGroup->renderWithShader(altShader, M, V, P);
+}
+
 void SGRoot::render() {
     rootGroup->render(M, V, P);
+}
+
+void SGRoot::renderWithShader(RawShader *altShader) {
+    rootGroup->renderWithShader(altShader, M, V, P);
 }
 
 void SGRoot::update() {
@@ -44,3 +52,4 @@ void SGRoot::setGlobalUniformUpdateCallback(std::function<void (BaseMaterial*)> 
 void SGRoot::reload() {
     rootGroup->reload();
 }
+

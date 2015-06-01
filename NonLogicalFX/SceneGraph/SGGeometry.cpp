@@ -19,6 +19,20 @@ SGGeometry::SGGeometry() :
 }
 
 
+void SGGeometry::renderWithShader(RawShader *altShader, glm::mat4 M, glm::mat4 V, glm::mat4 P) {
+    if (verticyCount > 0 && vertexArrayBuffer != 0 && material != nullptr) {
+        altShader->bind();
+        altShader->setMVPUniform(M, V, P);
+        updateUniforms();
+
+        glBindVertexArray(vertexArrayBuffer);
+        if(parent) parent->updateGlobalUniformsForMaterial(material);
+
+        glDrawArrays(drawMode, 0, verticyCount);
+        altShader->unbind();
+    }
+}
+
 void SGGeometry::render(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
     if (verticyCount > 0 && vertexArrayBuffer != 0 && material != nullptr) {
         material->bind();

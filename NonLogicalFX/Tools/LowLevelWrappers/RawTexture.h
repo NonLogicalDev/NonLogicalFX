@@ -13,6 +13,7 @@ public:
     static RawTexture * emptyTexture;
 
     RawTexture();
+    RawTexture(GLenum texType, GLint internalFormat, int width, int height, GLint border, GLenum format, GLenum type, void const *data);
     RawTexture(GLint internalFormat,
                int width, int height,
                GLint border, GLenum format,
@@ -31,11 +32,9 @@ public:
 
     unsigned int id;
     GLenum texUnit;
+    GLenum _textureType;
 protected:
-    void loadTexture(GLint level, GLint internalFormat,
-            int width, int height,
-            GLint border, GLenum format,
-            GLenum type, void const* data);
+    void loadTexture2D(GLenum textureType, GLint level, GLint internalFormat, int width, int height, GLint border, GLenum format, GLenum type, void const *data);
 
 private:
 

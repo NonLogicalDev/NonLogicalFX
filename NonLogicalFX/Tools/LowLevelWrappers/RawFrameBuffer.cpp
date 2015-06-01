@@ -71,10 +71,10 @@ void RawFrameBuffer::unbind() {
 
 
 
-void RawFrameBuffer::attachToTexture2D(GLenum attachmentPoint, RawTexture *texture) {
+void RawFrameBuffer::attachToTexture2D(GLenum attachmentPoint, GLenum textureType, RawTexture *texture) {
     bind(bindPoint);
     this->texture = texture;
-    glFramebufferTexture2D(bindPoint, attachmentPoint, GL_TEXTURE_2D, texture->id, 0);
+    glFramebufferTexture2D(bindPoint, attachmentPoint, textureType, texture->id, 0);
 }
 
 void RawFrameBuffer::clear(GLbitfield buffers) {

@@ -16,7 +16,9 @@ public:
     SGRoot(glm::mat4 M, glm::mat4 V, glm::mat4 P);
 
     virtual void render();
+    virtual void renderWithShader(RawShader* altShader);
 
+    virtual void renderWithShader(RawShader* altShader, glm::mat4 M, glm::mat4 V, glm::mat4 P);
     virtual void render(glm::mat4 M, glm::mat4 V, glm::mat4 P);
     virtual void update();
     virtual void reload();

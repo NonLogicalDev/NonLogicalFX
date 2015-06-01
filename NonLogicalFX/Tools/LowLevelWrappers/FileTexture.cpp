@@ -39,7 +39,8 @@ void FileTexture::loadFromFile(const char * filename) {
     FIBITMAP *bitmap = FreeImage_ConvertTo32Bits(imagen);
     FreeImage_Unload(imagen);
 
-    loadTexture(0, GL_RGBA, mlWidth, mlHeight, 0, GL_BGRA, GL_UNSIGNED_BYTE, (GLvoid*)FreeImage_GetBits(bitmap));
+    this->_textureType = GL_TEXTURE_2D;
+    loadTexture2D(GL_TEXTURE_2D, 0, GL_RGBA, mlWidth, mlHeight, 0, GL_BGRA, GL_UNSIGNED_BYTE, (GLvoid *) FreeImage_GetBits(bitmap));
 
     FreeImage_Unload(bitmap);
 }

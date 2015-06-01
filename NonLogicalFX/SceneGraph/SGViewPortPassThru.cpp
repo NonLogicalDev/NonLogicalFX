@@ -60,9 +60,6 @@ void SGViewPortPassThru::constructGeometry() {
     bindVertexArray();
 
     GLuint positions, pLoc = 0, pTex = 2;
-//    generateAndBindBufferWithData(&positions,
-//            verticies.size() * sizeof(float), &verticies[0], GL_STATIC_DRAW
-//    );
     generateAndBindBuffer(&positions);
     glBufferData(GL_ARRAY_BUFFER, verticies.size() * sizeof(float), &verticies[0], GL_STATIC_DRAW);
 

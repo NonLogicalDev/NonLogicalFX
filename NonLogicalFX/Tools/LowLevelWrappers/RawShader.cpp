@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <iostream>
 #include <sstream>
+#include <GLM/gtc/type_ptr.h>
 #include "RawShader.h"
 
 // Public:
@@ -107,7 +108,23 @@ bool RawShader::compileShader(std::string shaderSource, GLenum shaderType, GLuin
 
         log = new char[logLength];
         glGetShaderInfoLog(shader, logLength, &logLength, &log[0]);
-        if(verbose) fprintf(stderr, "Shader[%s] Compile Errror: \n %s", name.c_str(), &log[0]);
+        if(verbose) {
+            std::stringstream vert, frag;
+            std::string s = source;
+            std::string delimiter = "\n";
+            fprintf(stderr, "Shader[%s] Compile Errror: \n %s", name.c_str(), &log[0]);
+
+            size_t pos = 0;
+            std::string line;
+            int i = 1;
+            while ((pos = s.find(delimiter)) != std::string::npos) {
+                line = s.substr(0, pos);
+                s.erase(0, pos + delimiter.length());
+
+                fprintf(stderr, ">[%i]: %s\n", i, line.c_str());
+                i++;
+            }
+        }
         delete[] log;
 
         glDeleteShader(shader);
@@ -137,6 +154,7 @@ bool RawShader::linkShaders(std::vector<GLuint> shaders, GLuint *linkedProgramOu
         log = new char[logLength];
         glGetProgramInfoLog(program, logLength, &logLength, &log[0]);
         if(verbose) fprintf(stderr, "Shader[%s] Linking Errror: \n %s", name.c_str(), &log[0]);
+
         delete[] log;
 
         glDeleteProgram(program);
@@ -220,4 +238,19 @@ bool RawShader::separateSource(std::string source, std::string *vertexSource, st
     } else {
         return false;
     }
+}
+
+void RawShader::setMVPUniform(glm::mat4 M, glm::mat4 V, glm::mat4 P) {
+    GLint   MM = uniform("_Model"),
+            VV = uniform("_View"),
+            PP = uniform("_Projection"),
+            MV = uniform("_MVP");
+
+    glm::mat4 MVP = P * V * M;
+
+    glUniformMatrix4fv(MM, 1, GL_FALSE, glm::value_ptr(M));
+    glUniformMatrix4fv(VV, 1, GL_FALSE, glm::value_ptr(V));
+    glUniformMatrix4fv(PP, 1, GL_FALSE, glm::value_ptr(P));
+    glUniformMatrix4fv(MV, 1, GL_FALSE, glm::value_ptr(MVP));
+
 }

@@ -9,6 +9,8 @@
 #define SL_DEPTH_SHADER "DepthShader"
 #define SL_TEST_SHADER "TestShader"
 #define SL_UV_TEST "UVTest"
+#define SL_NORMAL_MAPPER "NormalMapper"
+#define SL_BLUR "blur"
 
 #include <map>
 #include <string>
@@ -26,6 +28,8 @@ public:
         i.add(SL_DEPTH_SHADER);
         i.add(SL_TEST_SHADER);
         i.add(SL_UV_TEST);
+        i.add(SL_NORMAL_MAPPER);
+        i.add(SL_BLUR);
     }
 private:
     std::map<std::string, RawShader*> collection;
